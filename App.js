@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+
+
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import Router from './Router';
+import AuthProvider from './ContextAPI/AuthProvider';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  let [fontsLoading] =  useFonts ({
+    'outfit-regular':require('./assets/fonts/Outfit-Regular.ttf'),
+    'outfit-medium':require('./assets/fonts/Outfit-Medium.ttf'),
+    'outfit-bold':require('./assets/fonts/Outfit-Bold.ttf'),
+  })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if(!fontsLoading)
+  {
+     return <AppLoading></AppLoading> ;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return (
+    <AuthProvider>
+      <Router>
+
+      </Router>
+    </AuthProvider>
+  )
+};
+
+
