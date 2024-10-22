@@ -108,11 +108,27 @@ const SignIn = () => {
        </TouchableOpacity>
   
   
+       <TouchableOpacity  onPress={()=>navigation.navigate('reset')}  style={{
+        padding:18,
+        borderColor:Colors.BLACK,
+        borderRadius:10,
+          marginTop:20,
+          borderRadius:10,
+      borderWidth:2,
+      paddingLeft:10,
+       }}  >
+        <Text style={{
+          color:Colors.BLACK,
+          fontFamily:'outfit-medium',
+          textAlign:'center',
+        }} > Forgot Password</Text>
+       </TouchableOpacity >
+
        <TouchableOpacity  onPress={()=>navigation.navigate('signup')}  style={{
         padding:18,
         borderColor:Colors.BLACK,
         borderRadius:10,
-          marginTop:40,
+          marginTop:20,
           borderRadius:10,
       borderWidth:2,
       paddingLeft:10,

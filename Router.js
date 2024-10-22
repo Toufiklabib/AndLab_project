@@ -6,6 +6,7 @@ import Welcome from './Pages/Welcome/Welcome';
 import SignIn from './Pages/Sign_In/SignIn';
 import SignUp from './Pages/Sign_Up/SignUp';
 import Home from './Pages/Home/Home';
+import Forgate from './Pages/Forgate/Forgate';
 
 const Router = () => {
  
@@ -18,6 +19,7 @@ const Router = () => {
         <Stack.Screen name='signup' component={SignUp} options={{headerShown:false}} ></Stack.Screen>
         <Stack.Screen name='login' component={SignIn} options={{headerShown:false}} ></Stack.Screen>
         <Stack.Screen name='home' component={Home} options={{headerShown:false}} ></Stack.Screen>
+        <Stack.Screen name='reset' component={Forgate} options={{headerShown:false}} ></Stack.Screen>
         </Stack.Navigator>
         </NavigationContainer>
       );
