@@ -1,16 +1,25 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Colors } from '../../Constants/Colors';
-import { useNavigation } from '@react-navigation/native';
 import { FirebaseConext } from '../../ContextAPI/AuthProvider';
-
 const Forgate = () => {
 
-    const navigation = useNavigation();
     const [email,setEmail]= useState(null);
-    const [password,setPassword]= useState(null);
-    const {login,loading ,setLoading} = useContext(FirebaseConext);
-
+   
+    const {loading ,setLoading,resetPass} = useContext(FirebaseConext);
+  
+    const handelResetPass = () => {
+      console.log("Resetting password for email:", email);
+      resetPass(email)
+      .then(() => {
+          setEmail('');
+          setLoading(false);
+      })
+      .catch((error) => {
+          const errorMessage = error.message;
+          console.error("Error resetting password:", errorMessage);
+      });
+  }
 
   return (
     <View style={{padding:30,marginTop:60,
@@ -54,7 +63,9 @@ const Forgate = () => {
           />
        </View>
   
-       <TouchableOpacity style={{
+       <TouchableOpacity
+       onPress={handelResetPass}
+       style={{
         padding:18,
         backgroundColor:Colors.BLACK,
         borderRadius:10,

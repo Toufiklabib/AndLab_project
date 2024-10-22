@@ -1,5 +1,6 @@
 
-import { getAuth } from 'firebase/auth';
+
+import { sendPasswordResetEmail } from "firebase/auth";
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Config/Firenase.init';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
@@ -22,6 +23,10 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
        
      }
+     const resetPass = (email) =>{
+      setLoading(true);
+      return  sendPasswordResetEmail(auth, email);
+     }
 
      useEffect(()=>{
         const unsubscribe =  onAuthStateChanged(auth,(currentUser)=>{
@@ -38,7 +43,7 @@ const AuthProvider = ({children}) => {
           
        },[])
 
-  const myAuth = {register ,login, logout ,user ,loading ,setLoading};
+  const myAuth = {register ,login, logout ,user ,loading ,setLoading ,resetPass};
 
   return (
      <FirebaseConext.Provider value={myAuth} >
